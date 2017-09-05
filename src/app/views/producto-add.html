@@ -3,19 +3,25 @@
 
 <form #formProducto="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-producto">
 
-  <label for="">Nombre</label>
-  <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="producto.nombre" class="form-control" />
+  <label for="">Nombre
+    <span *ngIf="!nombre.valid && nombre.touched" class="label label-danger">El nombre es obligatorio</span>
+  </label>
+  <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="producto.nombre" class="form-control" required />
 
-  <label for="">Descripción</label>
-  <textarea #descripcion="ngModel" name="descripcion" [(ngModel)]="producto.descripcion" class="form-control" ></textarea>
+  <label for="">Descripción
+    <span *ngIf="!descripcion.valid && descripcion.touched" class="label label-danger">La descripción es obligatorio</span>
+  </label>
+  <textarea #descripcion="ngModel" name="descripcion" [(ngModel)]="producto.descripcion" class="form-control" required></textarea>
 
-  <label for="">Precio</label>
-  <input type="text" #precio="ngModel" name="precio" [(ngModel)]="producto.precio" class="form-control" />
-  
+  <label for="">Precio
+    <span *ngIf="!precio.valid && precio.touched" class="label label-danger">El precio no es correcto</span>
+  </label>
+  <input type="text" #precio="ngModel" name="precio" [(ngModel)]="producto.precio" class="form-control" required pattern="[0-9]+" />
+
   <label for="">Imagen</label>
   <input type="file" class="form-control" />
 
   <br/>
-  <input type="submit" value="{{titulo}}" class="btn btn-success">
+  <input type="submit" value="{{titulo}}" [disabled]="!formProducto.form.valid" class="btn btn-success"/>
 
 </form>
