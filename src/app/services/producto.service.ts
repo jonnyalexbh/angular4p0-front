@@ -16,7 +16,7 @@ export class ProductoService{
   }
 
   getProductos(){
-    return "TEXTO DESDE EL SERVICIO";
+    return this._http.get(this.url+'products').map(res => res.json());
   }
 
 }
