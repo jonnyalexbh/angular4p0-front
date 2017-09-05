@@ -12,13 +12,19 @@ import { GLOBAL } from '../services/global';
 })
 export class ProductoAddComponent{
   public titulo: string;
+  public producto: Producto;
 
   constructor(){
     this.titulo = 'Crear un nuevo producto';
+    this.producto = new Producto(0,'','',0,'');
   }
 
   ngOnInit(){
     console.log('producto-add.component.ts cargado...');
+  }
+
+  onSubmit(){
+    console.log(this.producto);
   }
 
 }
