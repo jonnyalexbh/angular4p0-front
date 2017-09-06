@@ -19,7 +19,7 @@
           <p>{{producto.precio}} €</p>
 
           <div>
-            <a class="btn btn-md btn-primary">Ver</a>
+            <a [routerLink]="['/producto', producto.id]" class="btn btn-md btn-primary">Ver</a>
             <a class="btn btn-md btn-warning">Editar</a>
             <a class="btn btn-md btn-danger">Borrar</a>
           </div>
